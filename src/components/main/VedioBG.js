@@ -6,7 +6,7 @@ const VedioBG = () => {
   const vedioData = useSelector((store) => store.movies.Vedio)
 
   const ytKey = vedioData?.results[0]?.key
-  console.log(ytKey)
+
 
   return (
     <div className="text-white ">

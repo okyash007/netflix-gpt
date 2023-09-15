@@ -1,6 +1,6 @@
 .aws-btn {
     --button-default-height: 40px;
-    --button-default-font-size: 0px;
+    --button-default-font-size: 13px;
     --button-default-border-radius: 6px;
     --button-horizontal-padding: 10px;
     --button-raise-level: 3px;
@@ -31,3 +31,13 @@
     --button-danger-color-active: #af2929;
     --button-danger-border: none;
   }
+
+@media screen and (max-width: 768px) {
+  .aws-btn{
+    --button-default-height: 40px;
+    --button-default-font-size: 13px;
+    --button-default-border-radius: 6px;
+    --button-horizontal-padding: 10px;
+  }
+
+}

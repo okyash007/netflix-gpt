@@ -1,9 +1,10 @@
 import React from 'react'
+import Scomp from './Scomp'
 
 const Second = () => {
   return (
-    <div className='text-white w-full h-96'>
-      Second</div>
+    <div>
+      <Scomp/></div>
   )
 }
 

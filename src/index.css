@@ -14,3 +14,12 @@
     position: fixed;
   top: 0;
 }
+
+
+::-webkit-scrollbar{
+  width: 0;
+}
+
+.edit-schroll{
+  scrollbar-color: red orange
+}

@@ -39,11 +39,11 @@ const Header = () => {
 
   return (
     <>
-    <div className="navbar w-full h-96 max-sm:h-48 z-40">
-      <div className="w-full h-96 max-sm:h-48 absolute z-10 bg-gradient-to-b from-black max-sm:from-red-950 bg-local">
+    <div className="navbar w-full h-48 max-sm:h-48 z-40">
+      <div className="w-full h-48 max-sm:h-48 absolute z-10 bg-gradient-to-b from-black max-sm:from-red-950 bg-local">
         <div className="flex flex-row justify-between">
           <img
-            className="w-48 z-0 m-3 max-sm:m-4 max-sm:w-28"
+            className="w-48 z-0 m-3 max-lg:w-36 max-sm:m-4 max-sm:w-28 "
             src={Logo}
             alt="logo"
           />

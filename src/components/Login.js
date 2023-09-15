@@ -37,7 +37,7 @@ const Login = () => {
       setloading(false);
     }
 
-    if (!signIn) {
+    if (!signIn && errorMessage==null ) {
       createUserWithEmailAndPassword(
         auth,
         email.current.value,
@@ -61,10 +61,11 @@ const Login = () => {
           const errorCode = error.code;
           const errorMessage = error.message;
           seterrorMessage(errorCode + "-" + errorMessage);
+          navigate("/")
           // ..
         });
     }
-    if (signIn) {
+    if (signIn && errorMessage==null) {
       signInWithEmailAndPassword(
         auth,
         email.current.value,
@@ -74,9 +75,6 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           // console.log(user)
-          if (user.accessToken) {
-            navigate("/browse");
-          }
           // ...
         })
         .catch((error) => {
@@ -123,7 +121,7 @@ const Login = () => {
         <p className="text-xs font-semibold text-red-600">{errorMessage}</p>
           <div onClick={clicked} className="my-3">
         <AwesomeButton type="danger" className="w-full" >
-          sign up
+        {signIn ? "Sign In " : "Sign Up"}
         </AwesomeButton>
         </div>
         <div className="text-xs font-semibold text-gray-400 py-6 ">
