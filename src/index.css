@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.zoom{
+
+    transition-property: all;
+    transition-duration: 2s;
+    transition-timing-function: ease-in-out;
+
+}
+
+.navbar{
+    position: fixed;
+  top: 0;
+}
