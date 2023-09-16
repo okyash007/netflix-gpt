@@ -10,16 +10,16 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
-import { AwesomeButton } from 'react-awesome-button';
-import 'react-awesome-button/dist/styles.css';
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
 
 const Login = () => {
   const [signIn, setsignIn] = useState(true);
   const [errorMessage, seterrorMessage] = useState(null);
-  const [loading, setloading] = useState(false);
+  const [passwordError, setpasswordError] = useState();
   const navigate = useNavigate();
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const email = useRef(null);
   const password = useRef(null);
@@ -28,16 +28,18 @@ const Login = () => {
   const togglesignIn = () => {
     setsignIn(!signIn);
   };
+  
+
 
   const clicked = () => {
-    setloading(true);
     const message = validateUser(email.current.value, password.current.value);
-    seterrorMessage(message);
-    if (message) {
-      setloading(false);
-    }
+    seterrorMessage(message)
+    if (message) return;
 
-    if (!signIn && errorMessage==null ) {
+
+
+
+    if (!signIn) {
       createUserWithEmailAndPassword(
         auth,
         email.current.value,
@@ -46,26 +48,31 @@ const Login = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           updateProfile(auth.currentUser, {
-            displayName: name.current.value, photoURL: "https://example.com/jane-q-user/profile.jpg"
-          }).then(() => {
-
-            const { uid, email, displayName, photoURL } = auth.currentUser
-            dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }));
-            
-          }).catch((error) => {
-            
-          });
-
+            displayName: name.current.value,
+            photoURL: "https://example.com/jane-q-user/profile.jpg",
+          })
+            .then(() => {
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+            })
+            .catch((error) => {});
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          seterrorMessage(errorCode + "-" + errorMessage);
-          navigate("/")
+          seterrorMessage(errorMessage);
+          navigate("/");
           // ..
         });
     }
-    if (signIn && errorMessage==null) {
+    if (signIn) {
       signInWithEmailAndPassword(
         auth,
         email.current.value,
@@ -80,13 +87,12 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode);
-          if (errorCode === "auth/user-not-found") {
-            seterrorMessage("You are not registered");
-            togglesignIn();
-          }
+
+          seterrorMessage(errorMessage);
+          togglesignIn();
         });
     }
+  
   };
 
   return (
@@ -119,10 +125,10 @@ const Login = () => {
           className="p-3 my-2 text-sm bg-gray-700 rounded"
         />
         <p className="text-xs font-semibold text-red-600">{errorMessage}</p>
-          <div onClick={clicked} className="my-3">
-        <AwesomeButton type="danger" className="w-full" >
-        {signIn ? "Sign In " : "Sign Up"}
-        </AwesomeButton>
+        <div onClick={clicked} className="my-3">
+          <AwesomeButton type="danger" className="w-full">
+            {signIn ? "Sign In " : "Sign Up"}
+          </AwesomeButton>
         </div>
         <div className="text-xs font-semibold text-gray-400 py-6 ">
           {signIn ? "New to Netflix?" : "Alredy a user?"}{" "}
@@ -132,7 +138,6 @@ const Login = () => {
           >
             {signIn ? "Sign Up Now" : "Sign in"}
           </p>{" "}
-          {loading && <p>loading</p>}
         </div>
       </form>
       <Header />

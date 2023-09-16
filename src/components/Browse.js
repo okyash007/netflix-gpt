@@ -10,8 +10,8 @@ import useMoviesVedio from "../hooks/useMoviesVedio";
 const Browse = () => {
 
   usePlayingMovies()
-  useMoviesLogo(945729)
-  useMoviesVedio(945729)
+  useMoviesLogo(58128)
+  useMoviesVedio(58128)
 
   return (
     <div>
