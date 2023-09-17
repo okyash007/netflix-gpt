@@ -5,18 +5,15 @@ import useMoviesLogo from "../hooks/useMoviesLogo";
 import Main from "./main/Main";
 import useMoviesVedio from "../hooks/useMoviesVedio";
 
-
-
 const Browse = () => {
-
-  usePlayingMovies()
-  useMoviesLogo(58128)
-  useMoviesVedio(58128)
+  usePlayingMovies();
+  useMoviesLogo(337167);
+  useMoviesVedio(337167);
 
   return (
     <div>
       <Header />
-      <Main/>
+      <Main />
     </div>
   );
 };

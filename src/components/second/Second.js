@@ -3,8 +3,10 @@ import Scomp from './Scomp'
 
 const Second = () => {
   return (
-    <div>
+    <section id='movies'>
+    <div className='bg-black'>
       <Scomp/></div>
+      </section>
   )
 }
 

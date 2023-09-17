@@ -8,7 +8,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
@@ -21,6 +21,9 @@ const Login = () => {
 
   const dispatch = useDispatch();
 
+  const alreadyAUser = useSelector( (store)=>store.user  )
+  if(alreadyAUser) navigate("/browse")
+
   const email = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
@@ -28,6 +31,8 @@ const Login = () => {
   const togglesignIn = () => {
     setsignIn(!signIn);
   };
+
+
   
 
 
@@ -61,6 +66,7 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
+              navigate("/browse")
             })
             .catch((error) => {});
         })
@@ -68,8 +74,6 @@ const Login = () => {
           const errorCode = error.code;
           const errorMessage = error.message;
           seterrorMessage(errorMessage);
-          navigate("/");
-          // ..
         });
     }
     if (signIn) {
@@ -81,6 +85,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
+          navigate("/browse")
           // console.log(user)
           // ...
         })
@@ -96,10 +101,10 @@ const Login = () => {
   };
 
   return (
-    <div className="w-full h-screen max-sm:bg-black sm:bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/42df4e1f-bef6-499e-87ff-c990584de314/5e7c383c-1f88-4983-b4da-06e14c0984ba/IN-en-20230904-popsignuptwoweeks-perspective_alpha_website_large.jpg')]">
+    <div className="w-full h-screen max-sm:bg-black sm:bg-[url('https://media.istockphoto.com/id/1417034744/vector/seamless-topographic-contour-lines.jpg?s=612x612&w=0&k=20&c=cL-krxAVZrKUstGcglYF9x6PhI7SEf0Ung__2QKeizk=')]">
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="flex flex-col p-14 max-sm:p-6 bg-black absolute z-50 m-auto top-0 bottom-0 right-0 left-0 h-3/4 w-96 text-white rounded bg-opacity-80 max-sm:w-full max-sm:h-full max-sm:z-0 max-sm:py-28"
+        className="flex flex-col p-14 max-sm:p-6 bg-black absolute z-50 m-auto top-0 bottom-0 right-0 left-0 h-3/4 w-96 text-white rounded-lg bg-opacity-[20%] backdrop-blur-[3px] max-sm:w-full max-sm:h-full max-sm:z-0 max-sm:py-28"
       >
         <h1 className="font-sans font-semibold text-4xl my-4">
           {signIn ? "Sign In" : "Sign Up"}
@@ -109,20 +114,20 @@ const Login = () => {
             ref={name}
             type="text"
             placeholder="Full name"
-            className="p-3 my-2 text-sm bg-gray-700 rounded"
+            className="p-3 my-2 text-sm bg-[#333333] rounded"
           />
         )}
         <input
           ref={email}
           type="text"
           placeholder="Email"
-          className="p-3 my-2 text-sm bg-gray-700 rounded z-50"
+          className="p-3 my-2 text-sm bg-[#333333] rounded z-50"
         />
         <input
           ref={password}
           type="password"
           placeholder="Password"
-          className="p-3 my-2 text-sm bg-gray-700 rounded"
+          className="p-3 my-2 text-sm bg-[#333333] rounded"
         />
         <p className="text-xs font-semibold text-red-600">{errorMessage}</p>
         <div onClick={clicked} className="my-3">

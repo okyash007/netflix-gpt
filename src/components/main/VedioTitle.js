@@ -42,9 +42,11 @@ const VedioTitle = () => {
             >
               Play{" "}
             </AwesomeButton>
-            <button className="bg-white opacity-80 text-black px-6 rounded max-sm:text-xs max-sm:mt-2 max-sm:py-2">
+            <a href="#movies">
+            <button className="bg-white opacity-80 h-10 text-black px-6 rounded max-sm:text-xs max-sm:mt-2 max-sm:py-2">
                Info
             </button>
+            </a>
           </div>
           <p className="text-gray-500 text-[10px] sm:hidden  pr-3">{description}</p>
           </div>
