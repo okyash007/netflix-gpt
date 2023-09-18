@@ -21,14 +21,8 @@ const Body = () => {
       element: <GPTmain />,
     },
     {
-      path: "/watch",
+      path: "/watch/:waid",
       element: <Watch />,
-      children: [
-        {
-          path: "/watch/:waid",
-          element: <Watch />,
-        },
-      ],
     },
     {
       path: "/info/:infoid",

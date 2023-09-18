@@ -20,7 +20,7 @@ const GPTmoviesResults = () => {
 
       <div className="flex overflow-x-scroll edit-schroll  mx-12 my-10 ">
         {posterPaths.map((p) => (
-          <MovieCard path={p.posterPath} key={p.key} large={true} />
+          <MovieCard path={p.posterPath} key={p.key} id={p.key} large={true} />
         ))}
 
 

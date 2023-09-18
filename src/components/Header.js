@@ -6,16 +6,42 @@ import { useNavigate, useMatch } from "react-router-dom";
 import { addUser, removeUser } from "../utils/userSlice";
 import { Logo } from "../utils/constants";
 import { removeGPTresults } from "../utils/GPTslice";
+import { removeMovie } from "../utils/movieDetailsSlice";
+import { removeMovieList } from "../utils/moviesSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
 
-  const browseURL = useMatch("/browse")
+  const browseURL = useMatch("/browse");
+  const infoURL = useMatch("/info/:infoid");
+  const watchURL = useMatch("/watch/:waid") 
+  const gptURL = useMatch("/gpt")
 
-  if(browseURL) dispatch(removeGPTresults())
+  if (browseURL ) {
+    dispatch(removeGPTresults());
+    dispatch(removeMovie())
+    // dispatch( removeWtach )
+  }
 
+  if ( infoURL ){
+    dispatch(removeMovieList())
+    dispatch(removeGPTresults())
+    // dispatch(remove Watch)
+  }
+
+  if(watchURL){
+    dispatch(removeMovieList())
+    dispatch(removeGPTresults())
+    dispatch(removeMovie())
+  }
+
+  if(gptURL){
+    dispatch(removeMovieList())
+    dispatch(removeMovie())
+        // dispatch(remove Watch)
+  }
 
 
   const clickSignOut = () => {
@@ -79,7 +105,12 @@ const Header = () => {
                   >
                     Sign out
                   </div>
-                  <div className="mt-6 mr-5" onClick={()=>{ navigate("/gpt") }}>
+                  <div
+                    className="mt-6 mr-5"
+                    onClick={() => {
+                      navigate("/gpt");
+                    }}
+                  >
                     <button class="shadow__btn">
                       <div className="font-sans text-sm font-medium">
                         <img
