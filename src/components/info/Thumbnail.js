@@ -4,18 +4,22 @@ import YTcard from "./YTcard";
 import { useNavigate } from "react-router-dom";
 
 const Thumbnail = ({ ytKey }) => {
-  const VedioData = useVedioData(ytKey);
-  const navigate = useNavigate()
 
-  if (!VedioData) return;
+  const navigate = useNavigate();
+
+
+
+
+
+
 
   return (
-    <div onClick={ () => { navigate( "/watch/"+ytKey ) } }>
-      <YTcard
-        thumbnailURL={VedioData.thumbnail_url}
-        authorName={VedioData.author_name}
-        title={VedioData.title}
-      />
+    <div
+      onClick={() => {
+        navigate("/watch/" + ytKey);
+      }}
+    >
+<YTcard ytkey = {ytKey} />
     </div>
   );
 };

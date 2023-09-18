@@ -10,6 +10,7 @@ import { removeMovie } from "../utils/movieDetailsSlice";
 import { removeMovieList } from "../utils/moviesSlice";
 
 const Header = () => {
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
@@ -18,6 +19,7 @@ const Header = () => {
   const infoURL = useMatch("/info/:infoid");
   const watchURL = useMatch("/watch/:waid") 
   const gptURL = useMatch("/gpt")
+
 
   if (browseURL ) {
     dispatch(removeGPTresults());

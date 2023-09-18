@@ -16,11 +16,9 @@ const Info = () => {
   const Data = useSelector((store) => store.movieDetails);
 
   const movieData = Data.details;
-
+  // console.log(movieData.backdrop_path);
 
   if (!movieData) return;
-
-
 
   // console.log( ytKeys )
 
@@ -32,9 +30,10 @@ const Info = () => {
         <div className="bg-gradient-to-t w-full aspect-video absolute top-0 from-black z-10"></div>
         <div className="bg-gradient-to-t w-full aspect-video absolute top-1 from-black z-10"></div>
 
-        <img src={IMAGE_URL + movieData.backdrop_path} alt="" />
+        {movieData.backdrop_path && (
+          <img src={IMAGE_URL + movieData.backdrop_path} alt="" />
+        )}
       </div>
-      
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Thumbnail from "./Thumbnail";
 
 const Vedios = () => {
-  const vedios = useSelector((store) => store.movieDetails.Vedios);
+  const vedios = useSelector((store) => store?.movieDetails?.Vedios);
 
   if (!vedios) return;
 
