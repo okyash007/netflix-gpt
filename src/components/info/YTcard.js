@@ -21,6 +21,7 @@ const YTcard = ({ ytkey }) => {
           onClick={() => {
             navigate("/watch/" + ytkey);
           }}
+          className="cursor-pointer"
         >
           <img
             src={thumbnail}

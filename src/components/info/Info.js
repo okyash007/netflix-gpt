@@ -3,7 +3,7 @@ import Header from "../Header";
 import { useParams } from "react-router-dom";
 import useMovieDetails from "../../hooks/useMovieDetails";
 import { useSelector } from "react-redux";
-import { IMAGE_URL } from "../../utils/constants";
+import { IMAGE_URL, MOVIE_LOGO_URL } from "../../utils/constants";
 import useMoviesVedio from "../../hooks/useMoviesVedio";
 import Vedios from "./Vedios";
 import MovieDetails from "./MovieDetails";
@@ -24,6 +24,7 @@ const Info = () => {
   // console.log( ytKeys )
 
   return (
+    <>
     <div>
       <Header />
       <MovieDetails movieData={movieData} />
@@ -36,7 +37,9 @@ const Info = () => {
           <img src={IMAGE_URL + movieData.backdrop_path} alt="" />
         )}
       </div>
+      
     </div>
+    </>
   );
 };
 
