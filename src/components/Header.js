@@ -10,41 +10,38 @@ import { removeMovie } from "../utils/movieDetailsSlice";
 import { removeMovieList } from "../utils/moviesSlice";
 
 const Header = () => {
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
 
   const browseURL = useMatch("/browse");
   const infoURL = useMatch("/info/:infoid");
-  const watchURL = useMatch("/watch/:waid") 
-  const gptURL = useMatch("/gpt")
+  const watchURL = useMatch("/watch/:waid");
+  const gptURL = useMatch("/gpt");
 
-
-  if (browseURL ) {
+  if (browseURL) {
     dispatch(removeGPTresults());
-    dispatch(removeMovie())
+    dispatch(removeMovie());
     // dispatch( removeWtach )
   }
 
-  if ( infoURL ){
-    dispatch(removeMovieList())
-    dispatch(removeGPTresults())
+  if (infoURL) {
+    dispatch(removeMovieList());
+    dispatch(removeGPTresults());
     // dispatch(remove Watch)
   }
 
-  if(watchURL){
-    dispatch(removeMovieList())
-    dispatch(removeGPTresults())
-    dispatch(removeMovie())
+  if (watchURL) {
+    dispatch(removeMovieList());
+    dispatch(removeGPTresults());
+    dispatch(removeMovie());
   }
 
-  if(gptURL){
-    dispatch(removeMovieList())
-    dispatch(removeMovie())
-        // dispatch(remove Watch)
+  if (gptURL) {
+    dispatch(removeMovieList());
+    dispatch(removeMovie());
+    // dispatch(remove Watch)
   }
-
 
   const clickSignOut = () => {
     signOut(auth)
@@ -91,7 +88,7 @@ const Header = () => {
                   onClick={() => {
                     navigate("/browse");
                   }}
-                  className="text-gray-300 cursor-pointer font-semibold hover:underline p-8 shadow_any inline-block"
+                  className="text-gray-300 max-sm:hidden cursor-pointer font-semibold hover:underline p-8 shadow_any inline-block"
                 >
                   Browse
                 </div>
@@ -103,7 +100,7 @@ const Header = () => {
                 <div className="flex">
                   <div
                     onClick={clickSignOut}
-                    className="text-gray-300 cursor-pointer font-semibold hover:underline p-8 shadow_any"
+                    className="text-gray-300 max-sm:hidden cursor-pointer font-semibold hover:underline p-8 shadow_any"
                   >
                     Sign out
                   </div>
@@ -119,7 +116,7 @@ const Header = () => {
                           src="https://seeklogo.com/images/C/chatgpt-logo-02AFA704B5-seeklogo.com.png"
                           alt=""
                           width={30}
-                        />{" "}
+                        />
                       </div>
                     </button>
                   </div>
@@ -127,6 +124,24 @@ const Header = () => {
               </>
             )}
           </div>
+          {user && (
+            <div className="flex flex-col items-end">
+              <button
+                className="text-white font-semibold text-xs sm:hidden hover:underline shadow_any py-2 px-5"
+                onClick={() => {
+                  navigate("/browse");
+                }}
+              >
+                Browse
+              </button>
+              <button
+                className="text-white font-semibold text-xs hover:underline sm:hidden shadow_any py-2 px-5"
+                onClick={clickSignOut}
+              >
+                Sign out
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </>

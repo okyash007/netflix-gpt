@@ -11,7 +11,9 @@ const Vedios = () => {
 
   vedios.results.map((m) => ytKeys.push(m.key));
 
-console.log(ytKeys)
+
+  if(!ytKeys) return
+
   return (
     <div className="text-white m-28 z-10 absolute flex flex-wrap justify-center">
       {ytKeys.map((m) => (

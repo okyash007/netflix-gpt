@@ -12,11 +12,13 @@ const VedioDetails = () => {
   const date = Data?.snippet?.publishedAt;
   const tags = Data?.snippet?.tags;
 
+  
+  
   function replaceJsx(str) {
     return str.split("\n");
   }
 
-  if (!description1) return null;
+if( !description1 ) return
 
   const description = replaceJsx(description1);
   //   console.log(description);
@@ -35,7 +37,7 @@ const VedioDetails = () => {
 
   const actualDate = formatDate(date);
 
-  console.log(tags);
+  //   console.log(tags);
   return (
     <div className="w-full flex justify-center">
       <div className="w-[70%] m-2 ">
@@ -45,17 +47,17 @@ const VedioDetails = () => {
             {authorName}
           </button>
           <button className="text-white text-xs font-semibold bg-[#000000] p-2 px-4 mt-2 rounded-full ">
-            {actualDate}
+            <p className="inline-block text-gray-500">uploaded on </p> {actualDate}
           </button>
         </div>
         <div className="bg-[#262626] px-4 py-2 my-2 rounded-3xl">
-          {tags.map((m) => (
+          {tags && tags.map((m) => (
             <p className="inline-block pr-1 text-blue-500 text-xs font-semibold">
               {"#" + m}{" "}
             </p>
           ))}
           <div className="mt-2">
-            {description.map((m) => (
+            {description1 && description.map((m) => (
               <p className="text-white text-xs font-semibold mb-4"> {m} </p>
             ))}
           </div>

@@ -154,3 +154,7 @@
 .input-alt:focus + .input-border-alt {
   width: 100%;
 }
+
+.logout{
+  color:#fff
+}
