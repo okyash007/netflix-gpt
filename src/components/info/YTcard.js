@@ -12,7 +12,6 @@ const YTcard = ({ ytkey }) => {
 
   if (!Data?.snippet) return;
 
-  console.log(thumbnail);
 
   return (
     <div className="flex flex-col max-lg:flex-row">

@@ -20,7 +20,7 @@ const MovieCard = ({ path, large, id }) => {
         />
       )}
 
-      {large && <img src={POSTER_URL + path} onClick={()=> { navigate( "/info/"+ id ) }} className="w-56 max-lg:w-44  mx-3 my-1 rounded cursor-pointer inline-block" alt="" />}
+      {large && <img src={POSTER_URL + path} onClick={()=> { navigate( "/info/"+ id ) }} className="w-56 max-lg:w-36  mx-1 my-1 rounded cursor-pointer inline-block" alt="" />}
     </>
   );
 };

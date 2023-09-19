@@ -2,8 +2,9 @@ import { useEffect } from "react";
 import { API_OPTIONS } from "../utils/constants";
 import { addLogo } from "../utils/moviesSlice";
 import { useDispatch } from "react-redux";
+import { addLogoData } from "../utils/movieDetailsSlice";
 
-const useMoviesLogo = (id) =>{
+const useMoviesLogo = (id , info ) =>{
   const dispatch = useDispatch();
 
     const logo = async () => {
@@ -12,7 +13,15 @@ const useMoviesLogo = (id) =>{
         API_OPTIONS
       );
       const json = await data.json();
-      dispatch(addLogo(json));
+
+      if( info ){
+            dispatch(addLogoData(json))
+      }
+      else {
+        dispatch(addLogo(json));
+      }
+
+
     };
 
     
