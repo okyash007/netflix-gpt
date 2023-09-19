@@ -15,7 +15,7 @@ const Vedios = () => {
   if(!ytKeys) return
 
   return (
-    <div className="text-white m-28 z-10 absolute flex flex-wrap justify-center">
+    <div className="text-white lg:m-28 max-lg:mt-28 max-lg:mx-12 max-sm:mx-9 z-10 absolute flex flex-wrap max-lg:flex-col justify-center">
       {ytKeys.map((m) => (
         <Thumbnail ytKey={m} />
       ))}

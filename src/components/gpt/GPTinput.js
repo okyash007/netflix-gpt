@@ -45,7 +45,7 @@ const GPTinput = () => {
 
   return (
     <>
-      <div className="mt-44 mx-44">
+      <div className="mt-44 mx-44 max-sm:mx-4">
         <form
           className="form-control flex"
           onSubmit={(e) => e.preventDefault()}
@@ -53,7 +53,7 @@ const GPTinput = () => {
           <div className="w-full">
             <input
               ref={searchText}
-              className="input input-alt"
+              className="input input-alt max-sm:h-12 max-sm:text-sm max-sm:font-semibold bg-black"
               placeholder="Type something intelligent"
               required=""
               type="text"
@@ -61,7 +61,7 @@ const GPTinput = () => {
             <span className="input-border input-border-alt" />
           </div>
           <button
-            className="text-white bg-[#121212] px-3"
+            className="text-white bg-[#000000] px-3"
             onClick={handleClick}
           >
             <img

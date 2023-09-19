@@ -27,13 +27,13 @@ const Header = () => {
 
   if (infoURL) {
     dispatch(removeMovieList());
-    dispatch(removeGPTresults());
+    // dispatch(removeGPTresults());
     // dispatch(remove Watch)
   }
 
   if (watchURL) {
     dispatch(removeMovieList());
-    dispatch(removeGPTresults());
+    // dispatch(removeGPTresults());
     dispatch(removeMovie());
   }
 
