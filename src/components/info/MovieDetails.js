@@ -17,7 +17,7 @@ const MovieDetails = ({ movieData }) => {
   return (
     <>
       <div className="text-white absolute z-10 w-screen">
-        <div className="lg:mx-6  max-lg:mx-6 max-sm:mx-3 mt-[20%] max-sm:mt-[40%] mb-3">
+        <div className="lg:mx-6  max-lg:mx-6 max-sm:mx-3 mt-[20%] max-sm:mt-[40%] mb-0">
           {Data.logos && (
             <img
               src={MOVIE_LOGO_URL + Data.logos[0]?.file_path}

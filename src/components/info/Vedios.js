@@ -17,8 +17,8 @@ const Vedios = () => {
 
   return (
     <>
-      <div className="lg:mx-10  max-lg:mx-12 max-sm:mx-3 mb-10">
-        <div className="text-white  z-10 flex flex-wrap max-lg:flex-col justify-start">
+      <div className="lg:mx-10  max-lg:mx-12 max-sm:mx-3">
+        <div className="text-white  z-10 flex flex-wrap max-lg:flex-col justify-start py-2">
           {ytKeys.map((m) => (
             <Thumbnail ytKey={m} />
           ))}
@@ -26,13 +26,13 @@ const Vedios = () => {
       </div>
 
       <div className="bg-[#a8a8a8] p-1 bg-opacity-10 backdrop-blur-[5px] rounded-lg lg:mx-6  max-lg:mx-6 max-sm:mx-3 sm:w-[50%] mb-4 pb-4 border-[0px] border-[#393939]">
-        <p className="p-2 text-sm"> No © issues </p>
+        <p className="p-2 text-xs"> No © copyright issues </p>
         <div className="flex justify-between">
           <div className="flex flex-col p-2">
             <p>Produced by</p>
             {movieData.production_companies.map((m) => {
               {
-                if (m.logo_path) {
+                if (m.name) {
                   return (
                     <div className="">
                       <p className="text-[10px]"> {m.name} </p>
